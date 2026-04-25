@@ -276,7 +276,7 @@ func (h *Handler) EventStreamHandler(w http.ResponseWriter, req *http.Request, p
 
 	if !ok {
 		h.log.Error(ErrEventStreamingNotSupported)
-		http.Error(w, "Event streaming is not supported at the moment.", http.StatusInternalServerError)
+		http.Error(w, "Event streaming is not supported at the moment.", http.StatusInternalServerError) //nolint:forbidigo // SSE error channel emits text/event-stream by contract
 		return
 	}
 
